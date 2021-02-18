@@ -1,0 +1,10 @@
+# Main configuration file for PlantsPlannerScanner
+# Some of these settings are safe, others can break your server if modified incorrectly
+# New settings/defaults won't appear automatically in this file when upgrading.
+
+# Delay between steps [int: ticks] (default: 1)
+# The scan is divided according to the number of blocks and proceeds.
+step-delay: 1
+
+# Limit of block scanning per step [int: blocks] (default: 500)
+block-per-step: 500

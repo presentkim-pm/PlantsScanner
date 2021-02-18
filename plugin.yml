@@ -5,4 +5,5 @@ version: 0.1.0
 api: [ 4.0.0 ]
 author: PresentKim
 description: Processes existing plants to be applied to PlantsPlanner
+depend: [ PlantsPlanner ]
 ...
