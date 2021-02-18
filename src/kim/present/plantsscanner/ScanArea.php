@@ -1,9 +1,9 @@
 <?php
 declare(strict_types=1);
 
-namespace kim\present\plantsplannerscanner;
+namespace kim\present\plantsscanner;
 
-use kim\present\plantsplannerscanner\task\ScanTask;
+use kim\present\plantsscanner\task\ScanTask;
 use pocketmine\math\Vector3;
 use pocketmine\player\Player;
 use pocketmine\utils\TextFormat;

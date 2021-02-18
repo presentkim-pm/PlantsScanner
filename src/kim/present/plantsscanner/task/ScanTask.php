@@ -1,12 +1,12 @@
 <?php
 declare(strict_types=1);
 
-namespace kim\present\plantsplannerscanner\task;
+namespace kim\present\plantsscanner\task;
 
 use kim\present\plantsplaner\block\IPlants;
 use kim\present\plantsplaner\tile\Plants;
-use kim\present\plantsplannerscanner\Loader;
-use kim\present\plantsplannerscanner\ScanArea;
+use kim\present\plantsscanner\Loader;
+use kim\present\plantsscanner\ScanArea;
 use pocketmine\math\Vector3;
 use pocketmine\network\mcpe\protocol\SpawnParticleEffectPacket;
 use pocketmine\player\Player;

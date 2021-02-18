@@ -1,6 +1,6 @@
 ---
-name: PlantsPlannerScanner
-main: kim\present\plantsplannerscanner\Loader
+name: PlantsScanner
+main: kim\present\plantsscanner\Loader
 version: 0.1.0
 api: [ 4.0.0 ]
 author: PresentKim
