@@ -40,6 +40,10 @@ class ScanTask extends Task{
     }
 
     public function onRun() : void{
+        if($this->world->isClosed()){
+            $this->area->onComplete($this->plantsCount, $this->proccessCount);
+            return;
+        }
         for($count = 0; $count < self::$blockPerStep; ++$count){
             $block = $this->world->getBlock($this->current);
             if($block instanceof IPlants){
