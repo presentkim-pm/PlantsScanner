@@ -39,7 +39,11 @@ final class Loader extends PluginBase implements Listener{
         $this->getServer()->getPluginManager()->registerEvents($this, $this);
     }
 
-    /** Listen player set pos1 */
+    /**
+     * @priority LOWEST
+     *
+     * Listen player set pos1
+     */
     public function onBlockBreak(BlockBreakEvent $event){
         $item = $event->getItem();
         if(!$item->getNamedTag()->hasTag(self::TAG_IDENTIFIER_SCANNER))
@@ -49,7 +53,11 @@ final class Loader extends PluginBase implements Listener{
         $event->cancel();
     }
 
-    /** Listen player set pos2 */
+    /**
+     * @priority LOWEST
+     *
+     * Listen player set pos2
+     */
     public function onPlayerInteract(PlayerInteractEvent $event) : void{
         if($event->getAction() !== PlayerInteractEvent::RIGHT_CLICK_BLOCK)
             return;
@@ -62,7 +70,11 @@ final class Loader extends PluginBase implements Listener{
         $event->cancel();
     }
 
-    /** Listen player start scanning */
+    /**
+     * @priority LOWEST
+     *
+     * Listen player start scanning
+     */
     public function onPlayerItemUse(PlayerItemUseEvent $event) : void{
         $item = $event->getItem();
         if(!$item->getNamedTag()->hasTag(self::TAG_IDENTIFIER_SCANNER))
