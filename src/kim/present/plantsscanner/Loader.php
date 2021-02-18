@@ -68,7 +68,11 @@ final class Loader extends PluginBase implements Listener{
         if(!$item->getNamedTag()->hasTag(self::TAG_IDENTIFIER_SCANNER))
             return;
 
-        ScanArea::get($event->getPlayer())->scan();
+        $player = $event->getPlayer();
+        if($player->isSneaking()){
+            ScanArea::get($event->getPlayer())->scan();
+        }
+
         $event->cancel();
     }
 }
