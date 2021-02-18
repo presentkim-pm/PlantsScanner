@@ -70,9 +70,9 @@ final class ScanArea{
         }
     }
 
-    public function onComplete(int $plantsCount, int $proccessCount) : void{
+    public function onComplete(int $count) : void{
         if($this->player->isOnline() && $this->player->isConnected()){
-            $this->player->sendMessage(TextFormat::GREEN . "[PlantsScanner] Scan is complete. (Scanned {$plantsCount} plants)");
+            $this->player->sendMessage(TextFormat::GREEN . "[PlantsScanner] Scan is complete. (Scanned {$count} plants)");
         }
         $this->isProceeding = false;
     }

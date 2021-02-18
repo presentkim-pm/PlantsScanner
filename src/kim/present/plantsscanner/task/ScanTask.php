@@ -25,7 +25,7 @@ class ScanTask extends Task{
     private Player $player;
     private World $world;
     private Vector3 $start, $end, $current;
-    private int $plantsCount = 0, $proccessCount = 0;
+    private int $count = 0;
 
     public function __construct(ScanArea $area){
         $this->area = $area;
@@ -41,24 +41,22 @@ class ScanTask extends Task{
 
     public function onRun() : void{
         if($this->world->isClosed()){
-            $this->area->onComplete($this->plantsCount, $this->proccessCount);
+            $this->area->onComplete($this->count);
             return;
         }
         for($count = 0; $count < self::$blockPerStep; ++$count){
             $block = $this->world->getBlock($this->current);
-            if($block instanceof IPlants){
-                ++$this->plantsCount;
-
+            if($block instanceof IPlants && $block->canGrow()){
                 $tile = $this->world->getTile($this->current);
                 if($tile === null){
                     $this->world->addTile(new Plants($this->world, $this->current));
-                    ++$this->proccessCount;
-                }
+                    ++$this->count;
 
-                $pk = new SpawnParticleEffectPacket();
-                $pk->position = $this->current->add(0.5, 1, 0.5);
-                $pk->particleName = "minecraft:crop_growth_emitter";
-                Server::getInstance()->broadcastPackets($this->world->getViewersForPosition($this->current), [$pk]);
+                    $pk = new SpawnParticleEffectPacket();
+                    $pk->position = $this->current->add(0.5, 1, 0.5);
+                    $pk->particleName = "minecraft:crop_growth_emitter";
+                    Server::getInstance()->broadcastPackets($this->world->getViewersForPosition($this->current), [$pk]);
+                }
             }
 
             if(++$this->current->x > $this->end->x){
@@ -66,7 +64,7 @@ class ScanTask extends Task{
                 if(++$this->current->z > $this->end->z){
                     $this->current->z = $this->start->z;
                     if(++$this->current->y > $this->end->y){
-                        $this->area->onComplete($this->plantsCount, $this->proccessCount);
+                        $this->area->onComplete($this->count);
                         return;
                     }
                 }
